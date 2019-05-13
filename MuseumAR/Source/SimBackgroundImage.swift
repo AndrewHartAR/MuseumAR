@@ -45,11 +45,7 @@ extension SimBackgroundImage {
 			height: resizedImageSize.height)
 		
 		UIGraphicsBeginImageContextWithOptions(skyboxImageSize, true, 1.0)
-		var adjustedImageFrame = imageFrame
-		adjustedImageFrame.origin.x += skyboxImageSize.width / 4
-		image.draw(in: adjustedImageFrame)
-		adjustedImageFrame.origin.x -= skyboxImageSize.width
-		image.draw(in: adjustedImageFrame)
+		image.draw(in: imageFrame)
 		let skyboxImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		

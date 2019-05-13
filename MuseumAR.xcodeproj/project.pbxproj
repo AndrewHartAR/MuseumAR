@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032192289E96100FE1D39 /* AppDelegate.swift */; };
-		49A0321E2289E96100FE1D39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0321D2289E96100FE1D39 /* ViewController.swift */; };
+		49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0321D2289E96100FE1D39 /* SimViewController.swift */; };
 		49A032232289E96300FE1D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A032222289E96300FE1D39 /* Assets.xcassets */; };
 		49A032262289E96300FE1D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A032242289E96300FE1D39 /* LaunchScreen.storyboard */; };
 		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
@@ -16,9 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49A032162289E96100FE1D39 /* MuseumAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A032162289E96100FE1D39 /* MuseumARSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumARSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A032192289E96100FE1D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		49A0321D2289E96100FE1D39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49A0321D2289E96100FE1D39 /* SimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimViewController.swift; sourceTree = "<group>"; };
 		49A032222289E96300FE1D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49A032252289E96300FE1D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49A032272289E96300FE1D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		49A032172289E96100FE1D39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49A032162289E96100FE1D39 /* MuseumAR.app */,
+				49A032162289E96100FE1D39 /* MuseumARSim.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,7 +58,7 @@
 			children = (
 				49A0322F2289FCF600FE1D39 /* Source */,
 				49A032192289E96100FE1D39 /* AppDelegate.swift */,
-				49A0321D2289E96100FE1D39 /* ViewController.swift */,
+				49A0321D2289E96100FE1D39 /* SimViewController.swift */,
 				49A032222289E96300FE1D39 /* Assets.xcassets */,
 				49A032242289E96300FE1D39 /* LaunchScreen.storyboard */,
 				49A032272289E96300FE1D39 /* Info.plist */,
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49A032152289E96100FE1D39 /* MuseumAR */ = {
+		49A032152289E96100FE1D39 /* MuseumARSim */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49A0322A2289E96300FE1D39 /* Build configuration list for PBXNativeTarget "MuseumAR" */;
+			buildConfigurationList = 49A0322A2289E96300FE1D39 /* Build configuration list for PBXNativeTarget "MuseumARSim" */;
 			buildPhases = (
 				49A032122289E96100FE1D39 /* Sources */,
 				49A032132289E96100FE1D39 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = MuseumAR;
+			name = MuseumARSim;
 			productName = MuseumAR;
-			productReference = 49A032162289E96100FE1D39 /* MuseumAR.app */;
+			productReference = 49A032162289E96100FE1D39 /* MuseumARSim.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49A032152289E96100FE1D39 /* MuseumAR */,
+				49A032152289E96100FE1D39 /* MuseumARSim */,
 			);
 		};
 /* End PBXProject section */
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A0321E2289E96100FE1D39 /* ViewController.swift in Sources */,
+				49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */,
 				49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */,
 				49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */,
 				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49A0322A2289E96300FE1D39 /* Build configuration list for PBXNativeTarget "MuseumAR" */ = {
+		49A0322A2289E96300FE1D39 /* Build configuration list for PBXNativeTarget "MuseumARSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49A0322B2289E96300FE1D39 /* Debug */,

@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		self.window!.makeKeyAndVisible()
 		
-		let vc = ViewController()
-		self.window!.rootViewController = vc
+		let simVC = SimViewController()
+		self.window!.rootViewController = simVC
 		
 		return true
 	}

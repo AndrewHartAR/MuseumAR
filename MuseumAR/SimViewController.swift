@@ -10,23 +10,35 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
-
+class SimViewController: UIViewController, ARSCNViewDelegate {
     let sceneView = ARSCNView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
 		view.addSubview(sceneView)
 		
-		let simBackgroundImage = SimBackgroundImage(
-			image: UIImage(named: "image1")!,
-			horizontalSpan: Float(60).degreesToRadians)
-		let skyboxImage = simBackgroundImage.skyboxImage()
+		let paintingImage = UIImage(named: "image1")!
 		
-		sceneView.scene.background.contents = skyboxImage
+//		let simBackgroundImage = SimBackgroundImage(
+//			image: UIImage(named: "image1")!,
+//			horizontalSpan: Float(60).degreesToRadians)
+//		let skyboxImage = simBackgroundImage.skyboxImage()
+		
+//		sceneView.scene.background.contents = skyboxImage
+		
+		//Rather than using SimBackgroundImage (for panoramas), we'll use a plane,
+		//since our image is flat, rather than a panorama
+		//This also allows us to interact with it in 6DOF
+		sceneView.scene.background.contents = UIColor.black
+		
+		let plane = SCNPlane(width: paintingImage.size.width * 0.001, height: paintingImage.size.height * 0.001)
+		plane.firstMaterial?.diffuse.contents = paintingImage
+		
+		let planeNode = SCNNode(geometry: plane)
+		planeNode.position.z = -2
+		sceneView.scene.rootNode.addChildNode(planeNode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
