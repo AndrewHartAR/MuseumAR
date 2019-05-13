@@ -20,6 +20,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
 		view.addSubview(sceneView)
+		
+		let simBackgroundImage = SimBackgroundImage(
+			image: UIImage(named: "image1")!,
+			horizontalSpan: Float(60).degreesToRadians)
+		let skyboxImage = simBackgroundImage.skyboxImage()
+		
+		sceneView.scene.background.contents = skyboxImage
     }
     
     override func viewWillAppear(_ animated: Bool) {

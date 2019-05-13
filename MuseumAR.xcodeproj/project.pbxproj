@@ -11,6 +11,8 @@
 		49A0321E2289E96100FE1D39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0321D2289E96100FE1D39 /* ViewController.swift */; };
 		49A032232289E96300FE1D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A032222289E96300FE1D39 /* Assets.xcassets */; };
 		49A032262289E96300FE1D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A032242289E96300FE1D39 /* LaunchScreen.storyboard */; };
+		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
+		49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		49A032222289E96300FE1D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49A032252289E96300FE1D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49A032272289E96300FE1D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
+		49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimBackgroundImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		49A032182289E96100FE1D39 /* MuseumAR */ = {
 			isa = PBXGroup;
 			children = (
+				49A0322F2289FCF600FE1D39 /* Source */,
 				49A032192289E96100FE1D39 /* AppDelegate.swift */,
 				49A0321D2289E96100FE1D39 /* ViewController.swift */,
 				49A032222289E96300FE1D39 /* Assets.xcassets */,
@@ -59,6 +64,15 @@
 				49A032272289E96300FE1D39 /* Info.plist */,
 			);
 			path = MuseumAR;
+			sourceTree = "<group>";
+		};
+		49A0322F2289FCF600FE1D39 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */,
+				49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A0321E2289E96100FE1D39 /* ViewController.swift in Sources */,
+				49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */,
 				49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */,
+				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
