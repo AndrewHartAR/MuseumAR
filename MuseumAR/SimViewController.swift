@@ -12,6 +12,8 @@ import ARKit
 
 class SimViewController: UIViewController, ARSCNViewDelegate {
     let sceneView = ARSCNView()
+	
+	let artworkNode = SCNNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +35,18 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		//This also allows us to interact with it in 6DOF
 		sceneView.scene.background.contents = UIColor.black
 		
-		let plane = SCNPlane(width: paintingImage.size.width * 0.001, height: paintingImage.size.height * 0.001)
+		let plane = SCNPlane(width: 3.367, height: 2.509)
 		plane.firstMaterial?.diffuse.contents = paintingImage
 		
 		let planeNode = SCNNode(geometry: plane)
-		planeNode.position.z = -2
+		planeNode.position.z = -3.5
 		sceneView.scene.rootNode.addChildNode(planeNode)
+		
+		let artworkPlane = SCNPlane(width: 2.15, height: 1.13)
+		artworkPlane.firstMaterial?.diffuse.contents = UIColor.blue.withAlphaComponent(0.35)
+		artworkNode.geometry = artworkPlane
+		artworkNode.position.z = -3.49
+		sceneView.scene.rootNode.addChildNode(artworkNode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
