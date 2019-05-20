@@ -16,12 +16,21 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	let artworkNode = SCNNode()
 	
 	let beacon1Node = BeaconNode()
-    
+	
+	let titleView = UIView()
+	var titleNode: ScalingInterfaceNode!
+	
+	private static let titleLabelInset: CGFloat = 8
+	private static let titleLabelSubtitleDifference: CGFloat = 4
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
 		view.addSubview(sceneView)
+		
+		let image = UIImage(named: "testStudio.jpg")
+		sceneView.scene.lightingEnvironment.contents = image
 		
 		let paintingImage = UIImage(named: "image1")!
 		
@@ -52,6 +61,43 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		
 		beacon1Node.position.z = 0.1
 		artworkNode.addChildNode(beacon1Node)
+		
+		let label = UILabel()
+		label.text = "French Fire Rafts Attacking the English Fleet off Quebec"
+		label.font = UIFont.boldSystemFont(ofSize: 18)
+		label.textAlignment = .center
+		label.textColor = UIColor.black
+		label.backgroundColor = UIColor.clear
+		label.numberOfLines = 0
+		label.frame.size = label.sizeThatFits(CGSize(width: 280, height: CGFloat.greatestFiniteMagnitude))
+		
+		let subheadingLabel = UILabel()
+		subheadingLabel.text = "28 June 1759, Samuel Scott"
+		subheadingLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+		subheadingLabel.textAlignment = .center
+		subheadingLabel.textColor = UIColor(white: 0.35, alpha: 1.0)
+		subheadingLabel.backgroundColor = UIColor.clear
+		subheadingLabel.numberOfLines = 1
+		subheadingLabel.sizeToFit()
+		
+		titleView.addSubview(label)
+		titleView.addSubview(subheadingLabel)
+		titleView.frame.size = CGSize(
+			width: label.frame.size.width + (SimViewController.titleLabelInset * 2),
+			height: label.frame.size.height + SimViewController.titleLabelSubtitleDifference +
+				subheadingLabel.frame.size.height + (SimViewController.titleLabelInset * 2))
+		titleView.backgroundColor = UIColor.white
+		titleView.layer.cornerRadius = 18
+		label.center.x = titleView.frame.size.width / 2
+		label.frame.origin.y = SimViewController.titleLabelInset
+		subheadingLabel.center.x = titleView.frame.size.width / 2
+		subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
+			SimViewController.titleLabelSubtitleDifference
+		
+		titleNode = ScalingInterfaceNode(view: titleView)
+		titleNode.position.z = 0.1
+		titleNode.position.y = Float(-(artworkPlane.height * 0.5))
+		artworkNode.addChildNode(titleNode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,15 +124,6 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	}
 
     // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
