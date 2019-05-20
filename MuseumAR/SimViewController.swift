@@ -102,4 +102,34 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+	
+	func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+		guard let currentFrame = sceneView.session.currentFrame,
+		let pov = sceneView.pointOfView else {
+			return
+		}
+		
+		let imageResolution = currentFrame.camera.imageResolution
+		let intrinsics = currentFrame.camera.intrinsics
+		let yFOV = 2 * atan(Float(imageResolution.height)/(2 * intrinsics[1,1]))
+		
+		DispatchQueue.main.async {
+			let A = yFOV * 0.5
+			let B = Float(180).degreesToRadians - A - Float(90).degreesToRadians
+			let a = (sin(A) * 1) / sin(B)
+			
+			//Visible distance, at a distance from the camera of 1m
+			let horizontalVisibleDistance = a * 2
+			
+			let horizontalDistancePerPoint = horizontalVisibleDistance / Float(self.sceneView.frame.size.width)
+			
+			let relativeBeaconPosition = self.beacon1Node.convertPosition(SCNVector3Zero, to: pov)
+			
+			let distanceToBeacon = SCNVector3Zero.distance(to: relativeBeaconPosition)
+			
+			let beaconNodeScale = horizontalDistancePerPoint * distanceToBeacon
+			
+			self.beacon1Node.scale = SCNVector3(beaconNodeScale, beaconNodeScale, beaconNodeScale)
+		}
+	}
 }
