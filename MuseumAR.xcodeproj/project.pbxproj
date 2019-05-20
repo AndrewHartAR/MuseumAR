@@ -11,6 +11,7 @@
 		495028472292D2DD0001E7E3 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */; };
 		495028492292D34D0001E7E3 /* ScaleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028482292D34D0001E7E3 /* ScaleNode.swift */; };
 		4950284B2292EA810001E7E3 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */; };
+		4950284D2292EF670001E7E3 /* ScalingInterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */; };
 		49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032192289E96100FE1D39 /* AppDelegate.swift */; };
 		49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0321D2289E96100FE1D39 /* SimViewController.swift */; };
 		49A032232289E96300FE1D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A032222289E96300FE1D39 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
 		495028482292D34D0001E7E3 /* ScaleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleNode.swift; sourceTree = "<group>"; };
 		4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extensions.swift"; sourceTree = "<group>"; };
+		4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalingInterfaceNode.swift; sourceTree = "<group>"; };
 		49A032162289E96100FE1D39 /* MuseumARSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumARSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A032192289E96100FE1D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49A0321D2289E96100FE1D39 /* SimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */,
 				49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */,
 				495028442292BF5D0001E7E3 /* BeaconNode.swift */,
+				4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */,
 				495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */,
 				495028482292D34D0001E7E3 /* ScaleNode.swift */,
 				4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */,
@@ -165,6 +168,7 @@
 				49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */,
 				495028452292BF5D0001E7E3 /* BeaconNode.swift in Sources */,
 				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
+				4950284D2292EF670001E7E3 /* ScalingInterfaceNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
