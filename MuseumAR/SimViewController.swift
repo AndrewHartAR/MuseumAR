@@ -111,9 +111,17 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		
 		let imageResolution = currentFrame.camera.imageResolution
 		let intrinsics = currentFrame.camera.intrinsics
-		let yFOV = 2 * atan(Float(imageResolution.height)/(2 * intrinsics[1,1]))
+//		let xFOV = 2 * atan(Float(imageResolution.width)/(2 * intrinsics[0,0]))
+		var yFOV = 2 * atan(Float(imageResolution.height)/(2 * intrinsics[1,1]))
 		
 		DispatchQueue.main.async {
+			let visibleYFOVScale = min(
+				1,
+				(self.sceneView.frame.size.width / self.sceneView.frame.size.height) /
+					(imageResolution.height / imageResolution.width))
+			
+			yFOV *= Float(visibleYFOVScale)
+			
 			let A = yFOV * 0.5
 			let B = Float(180).degreesToRadians - A - Float(90).degreesToRadians
 			let a = (sin(A) * 1) / sin(B)
