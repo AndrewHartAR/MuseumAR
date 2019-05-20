@@ -123,13 +123,18 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 			
 			let horizontalDistancePerPoint = horizontalVisibleDistance / Float(self.sceneView.frame.size.width)
 			
-			let relativeBeaconPosition = self.beacon1Node.convertPosition(SCNVector3Zero, to: pov)
+			let childNodes = self.sceneView.scene.rootNode.recursiveChildNodes()
+			let scaleNodes = childNodes.filter({$0 is ScaleNode}) as! [ScaleNode]
 			
-			let distanceToBeacon = SCNVector3Zero.distance(to: relativeBeaconPosition)
-			
-			let beaconNodeScale = horizontalDistancePerPoint * distanceToBeacon
-			
-			self.beacon1Node.scale = SCNVector3(beaconNodeScale, beaconNodeScale, beaconNodeScale)
+			for scaleNode in scaleNodes {
+				let relativeNodePosition = scaleNode.convertPosition(SCNVector3Zero, to: pov)
+				
+				let distanceToNode = SCNVector3Zero.distance(to: relativeNodePosition)
+				
+				let scale = horizontalDistancePerPoint * distanceToNode
+				
+				scaleNode.scale = SCNVector3(scale, scale, scale)
+			}
 		}
 	}
 }
