@@ -14,6 +14,8 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
     let sceneView = ARSCNView()
 	
 	let artworkNode = SCNNode()
+	
+	let beacon1Node = BeaconNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +41,17 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		plane.firstMaterial?.diffuse.contents = paintingImage
 		
 		let planeNode = SCNNode(geometry: plane)
-		planeNode.position.z = -3.5
+		planeNode.position.z = -2
 		sceneView.scene.rootNode.addChildNode(planeNode)
 		
 		let artworkPlane = SCNPlane(width: 2.15, height: 1.13)
 		artworkPlane.firstMaterial?.diffuse.contents = UIColor.blue.withAlphaComponent(0.35)
 		artworkNode.geometry = artworkPlane
-		artworkNode.position.z = -3.49
-		sceneView.scene.rootNode.addChildNode(artworkNode)
+		artworkNode.position.z = 0.1
+		planeNode.addChildNode(artworkNode)
+		
+		beacon1Node.position.z = 0.1
+		artworkNode.addChildNode(beacon1Node)
     }
     
     override func viewWillAppear(_ animated: Bool) {

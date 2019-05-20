@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495028452292BF5D0001E7E3 /* BeaconNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028442292BF5D0001E7E3 /* BeaconNode.swift */; };
+		495028472292D2DD0001E7E3 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */; };
+		495028492292D34D0001E7E3 /* ScaleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028482292D34D0001E7E3 /* ScaleNode.swift */; };
 		49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032192289E96100FE1D39 /* AppDelegate.swift */; };
 		49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0321D2289E96100FE1D39 /* SimViewController.swift */; };
 		49A032232289E96300FE1D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A032222289E96300FE1D39 /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		495028442292BF5D0001E7E3 /* BeaconNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconNode.swift; sourceTree = "<group>"; };
+		495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
+		495028482292D34D0001E7E3 /* ScaleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleNode.swift; sourceTree = "<group>"; };
 		49A032162289E96100FE1D39 /* MuseumARSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumARSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A032192289E96100FE1D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49A0321D2289E96100FE1D39 /* SimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,9 @@
 			children = (
 				49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */,
 				49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */,
+				495028442292BF5D0001E7E3 /* BeaconNode.swift */,
+				495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */,
+				495028482292D34D0001E7E3 /* ScaleNode.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -146,8 +155,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */,
+				495028492292D34D0001E7E3 /* ScaleNode.swift in Sources */,
+				495028472292D2DD0001E7E3 /* SCNVector3+Extensions.swift in Sources */,
 				49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */,
 				49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */,
+				495028452292BF5D0001E7E3 /* BeaconNode.swift in Sources */,
 				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
