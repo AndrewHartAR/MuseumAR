@@ -179,9 +179,22 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 				let scale = horizontalDistancePerPoint * distanceFromNode
 				
 				scaleNode.contentNode.scale = SCNVector3(scale, scale, scale)
+			}
+			
+			let billboardNodes = childNodes.filter({$0 is BillboardableNode}) as! [BillboardableNode]
+			
+			for billboardNode in billboardNodes {
+				let relativeNodePosition = self.sceneView.scene.rootNode.convertPosition(pov.position, to: billboardNode)
 				
+				let headingFromNode = SCNVector3Zero.heading(to: relativeNodePosition)
 				
+				if billboardNode.directions.contains(.horizontal) {
+					billboardNode.billboardContentNode.eulerAngles.y = Float(180).degreesToRadians - headingFromNode.horizontal
+				}
 				
+				if billboardNode.directions.contains(.vertical) {
+					billboardNode.billboardContentNode.eulerAngles.x = -headingFromNode.vertical
+				}
 			}
 		}
 	}
