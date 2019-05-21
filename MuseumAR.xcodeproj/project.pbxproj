@@ -19,6 +19,7 @@
 		49A032262289E96300FE1D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A032242289E96300FE1D39 /* LaunchScreen.storyboard */; };
 		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
 		49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */; };
+		49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		49A032272289E96300FE1D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimBackgroundImage.swift; sourceTree = "<group>"; };
+		49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */,
+				49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */,
 				49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */,
 				495028442292BF5D0001E7E3 /* BeaconNode.swift */,
 				4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */,
@@ -170,6 +173,7 @@
 				49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */,
 				49A0321A2289E96100FE1D39 /* AppDelegate.swift in Sources */,
 				495028452292BF5D0001E7E3 /* BeaconNode.swift in Sources */,
+				49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */,
 				494B238F229312FC00C4F778 /* BillboardableNode.swift in Sources */,
 				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
 				4950284D2292EF670001E7E3 /* ScalingInterfaceNode.swift in Sources */,
