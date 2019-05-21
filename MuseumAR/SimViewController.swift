@@ -10,6 +10,22 @@ import UIKit
 import SceneKit
 import ARKit
 
+class BillboardInterfaceNode: ScalingInterfaceNode, BillboardableNode {
+	var directions: [BillboardDirection] = [.vertical]
+	
+	var billboardContentNode = SCNNode()
+	
+	override init(view: UIView) {
+		super.init(view: view)
+		
+		billboardContentNode = contentNode
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
 class SimViewController: UIViewController, ARSCNViewDelegate {
     let sceneView = ARSCNView()
 	
@@ -18,7 +34,7 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	let beacon1Node = BeaconNode()
 	
 	let titleView = UIView()
-	var titleNode: ScalingInterfaceNode!
+	var titleNode: BillboardInterfaceNode!
 	
 	private static let titleLabelInset: CGFloat = 8
 	private static let titleLabelSubtitleDifference: CGFloat = 4
@@ -56,10 +72,12 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		let artworkPlane = SCNPlane(width: 2.15, height: 1.13)
 		artworkPlane.firstMaterial?.diffuse.contents = UIColor.blue.withAlphaComponent(0.35)
 		artworkNode.geometry = artworkPlane
-		artworkNode.position.z = 0.1
+		artworkNode.position.z = 0.01
 		planeNode.addChildNode(artworkNode)
 		
-		beacon1Node.position.z = 0.1
+		beacon1Node.position.z = 0.01
+		beacon1Node.position.x = -0.266
+		beacon1Node.position.y = 0.112
 		artworkNode.addChildNode(beacon1Node)
 		
 		let label = UILabel()
@@ -94,8 +112,8 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
 			SimViewController.titleLabelSubtitleDifference
 		
-		titleNode = ScalingInterfaceNode(view: titleView)
-		titleNode.position.z = 0.1
+		titleNode = BillboardInterfaceNode(view: titleView)
+		titleNode.position.z = 0.05
 		titleNode.position.y = Float(-(artworkPlane.height * 0.5))
 		artworkNode.addChildNode(titleNode)
     }
