@@ -26,7 +26,7 @@ class ScalingInterfaceNode: ScaleNode {
 		
 		super.init()
 		
-		addChildNode(interfaceNode)
+		contentNode.addChildNode(interfaceNode)
 		
 		backSideMaterial.diffuse.intensity = 2.0
 		backSideMaterial.metalness.contents = 0

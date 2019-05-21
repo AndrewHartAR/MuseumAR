@@ -35,7 +35,7 @@ class BeaconNode: ScaleNode {
 		beaconContainerNode.addChildNode(ringTubeNode)
 		
 		beaconContainerNode.eulerAngles.x = Float(90).degreesToRadians
-		addChildNode(beaconContainerNode)
+		contentNode.addChildNode(beaconContainerNode)
 		
 		DispatchQueue.main.async {
 			self.pulseTimer = Timer.scheduledTimer(

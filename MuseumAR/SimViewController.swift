@@ -172,13 +172,16 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 			let scaleNodes = childNodes.filter({$0 is ScaleNode}) as! [ScaleNode]
 			
 			for scaleNode in scaleNodes {
-				let relativeNodePosition = scaleNode.convertPosition(SCNVector3Zero, to: pov)
+				let relativeNodePosition = self.sceneView.scene.rootNode.convertPosition(pov.position, to: scaleNode)
 				
-				let distanceToNode = SCNVector3Zero.distance(to: relativeNodePosition)
+				let distanceFromNode = SCNVector3Zero.distance(to: relativeNodePosition)
 				
-				let scale = horizontalDistancePerPoint * distanceToNode
+				let scale = horizontalDistancePerPoint * distanceFromNode
 				
-				scaleNode.scale = SCNVector3(scale, scale, scale)
+				scaleNode.contentNode.scale = SCNVector3(scale, scale, scale)
+				
+				
+				
 			}
 		}
 	}

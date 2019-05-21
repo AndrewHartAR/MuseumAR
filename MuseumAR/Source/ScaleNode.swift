@@ -10,8 +10,13 @@ import Foundation
 import SceneKit
 
 class ScaleNode: SCNNode {
+	///The content which becomes scaled
+	var contentNode = SCNNode()
+	
 	override init() {
 		super.init()
+		
+		addChildNode(contentNode)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
