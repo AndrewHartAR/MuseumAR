@@ -27,17 +27,19 @@ class BillboardInterfaceNode: ScalingInterfaceNode, BillboardableNode {
 }
 
 class Beacon {
-	weak var node: BeaconNode?
-	var content: String
+	var node: BeaconNode
+	var contentTitle: String
+	var contentSummary: String
 	
-	init(node: BeaconNode?, content: String) {
+	init(node: BeaconNode, contentTitle: String, contentSummary: String) {
 		self.node = node
-		self.content = content
+		self.contentTitle = contentTitle
+		self.contentSummary = contentSummary
 	}
 }
 
 struct BeaconFocus {
-	var node: BeaconNode
+	var beacon: Beacon
 	var focusDate = Date()
 }
 
@@ -48,33 +50,41 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	
 	let beacon1Node = BeaconNode()
 	
-	var beaconNodes = [BeaconNode]()
+	var beacons = [Beacon]()
 	
-	weak var activeBeaconNode: BeaconNode? {
+	weak var activeBeacon: Beacon? {
 		didSet {
-			if oldValue != activeBeaconNode {
+			if oldValue?.node != activeBeacon?.node {
 				DispatchQueue.main.async {
-					if self.activeBeaconNode != nil {
+					if self.activeBeacon != nil {
 						self.animateInMaskView()
 					} else {
 						self.animateOutMaskView()
 					}
 				}
 				
-				oldValue?.mode = .normal
-				activeBeaconNode?.mode = .hidden
+				oldValue?.node.mode = .normal
+				activeBeacon?.node.mode = .hidden
+				
+				DispatchQueue.main.async {
+					self.detailView.title = self.activeBeacon?.contentTitle
+					self.detailView.summary = self.activeBeacon?.contentSummary
+					self.detailView.setNeedsLayout()
+					
+					self.detailView.isHidden = self.activeBeacon == nil
+				}
 			}
 		}
 	}
 	
 	var beaconFocus: BeaconFocus? {
 		didSet {
-			if oldValue?.node != beaconFocus?.node {
-				if oldValue?.node != activeBeaconNode {
-					oldValue?.node.mode = .normal
+			if oldValue?.beacon.node != beaconFocus?.beacon.node {
+				if oldValue?.beacon.node != activeBeacon?.node {
+					oldValue?.beacon.node.mode = .normal
 				}
 				
-				beaconFocus?.node.mode = .focus
+				beaconFocus?.beacon.node.mode = .focus
 			}
 		}
 	}
@@ -87,22 +97,20 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	
 	let maskView = UIView()
 	let maskViewCutoutView = UIView()
+	let maskViewCutoutOutline = UIView()
 	
 	private static let titleLabelInset: CGFloat = 8
 	private static let titleLabelSubtitleDifference: CGFloat = 4
 	
 	private static let cutoutRadius: CGFloat = 80
 	
-	private static let focusDuration: Double = 1
+	private static let focusRadius: CGFloat = 40
+	private static let focusDuration: Double = 0.8
 	
+	private let dotView = UIView()
 	
-	let circle: SKShapeNode = {
-		let circle = SKShapeNode(circleOfRadius: 100)
-		circle.fillColor = .white
-		circle.lineWidth = 0
-		circle.alpha = 1
-		return circle
-	}()
+	private let detailView = DetailView()
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +139,11 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		
 		maskView.backgroundColor = UIColor(white: 0, alpha: 1)
 		
+		dotView.frame.size = CGSize(width: 4, height: 4)
+		dotView.layer.cornerRadius = 2
+		dotView.backgroundColor = UIColor.white
+		sceneView.addSubview(dotView)
+		
 		maskViewCutoutView.backgroundColor = UIColor.white
 		maskViewCutoutView.frame.size = CGSize(
 			width: SimViewController.cutoutRadius * 2,
@@ -138,6 +151,16 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		maskViewCutoutView.layer.cornerRadius = SimViewController.cutoutRadius
 		maskView.addSubview(maskViewCutoutView)
 		sceneView.mask = maskView
+		
+		maskViewCutoutOutline.frame.size = maskViewCutoutView.frame.size
+		maskViewCutoutOutline.layer.cornerRadius = maskViewCutoutView.layer.cornerRadius
+		maskViewCutoutOutline.layer.borderWidth = 2
+		maskViewCutoutOutline.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+		maskViewCutoutOutline.isHidden = true
+		sceneView.addSubview(maskViewCutoutOutline)
+		
+		detailView.isHidden = true
+		view.addSubview(detailView)
 		
 		let plane = SCNPlane(width: 3.367, height: 2.509)
 		plane.firstMaterial?.diffuse.contents = paintingImage
@@ -157,7 +180,8 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		beacon1Node.position.y = 0.112
 		artworkNode.addChildNode(beacon1Node)
 		
-		beaconNodes.append(beacon1Node)
+		let beacon1 = Beacon(node: beacon1Node, contentTitle: "Heading", contentSummary: "This is some content which I expect will extend for several lines as I attempt to explain my position on what this content is really about.")
+		beacons.append(beacon1)
 		
 		let label = UILabel()
 		label.text = "French Fire Rafts Attacking the English Fleet off Quebec"
@@ -218,19 +242,30 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		super.viewDidLayoutSubviews()
 		sceneView.frame = view.bounds
 		maskView.frame.size = sceneView.bounds.size
+		dotView.center = focusPoint
+		detailView.frame = view.bounds
 		
 		cachedBounds = sceneView.bounds
 	}
 	
+	var focusPoint: CGPoint {
+		return CGPoint(
+			x: sceneView.bounds.size.width / 2,
+			y: sceneView.bounds.size.height - (sceneView.bounds.size.height / 1.618))
+	}
+	
 	func animateInMaskView() {
 		UIView.animate(withDuration: 0.4) {
-			self.maskView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+			self.maskView.backgroundColor = UIColor(white: 0, alpha: 0.65)
 		}
 		
 		self.maskViewCutoutView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+		self.maskViewCutoutOutline.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+		self.maskViewCutoutOutline.isHidden = false
 		
 		UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
 			self.maskViewCutoutView.transform = CGAffineTransform(scaleX: 1, y: 1)
+			self.maskViewCutoutOutline.transform = CGAffineTransform(scaleX: 1, y: 1)
 		}, completion: nil)
 	}
 	
@@ -241,8 +276,11 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		
 		UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
 			self.maskViewCutoutView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+			self.maskViewCutoutOutline.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
 		}) { _ in
 			self.maskViewCutoutView.transform = CGAffineTransform(scaleX: 1, y: 1)
+			self.maskViewCutoutOutline.transform = CGAffineTransform(scaleX: 1, y: 1)
+			self.maskViewCutoutOutline.isHidden = true
 		}
 	}
 
@@ -294,9 +332,9 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		let scaleNodes = childNodes.filter({$0 is ScaleNode}) as! [ScaleNode]
 		
 		
-		let center = CGPoint(x: cachedBounds.size.width / 2, y: cachedBounds.size.height / 2)
+		let focusPoint = self.focusPoint
 		
-		if let activeBeaconNode = activeBeaconNode {
+		if let activeBeacon = activeBeacon {
 			let beaconPosition = self.beacon1Node.convertPosition(SCNVector3Zero, to: nil)
 			
 			let projectedPoint = renderer.projectPoint(beaconPosition)
@@ -304,29 +342,30 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 			
 			DispatchQueue.main.async {
 				self.maskViewCutoutView.center = projectedCGPoint
+				self.maskViewCutoutOutline.center = projectedCGPoint
 			}
 		} else {
-			for beaconNode in self.beaconNodes {
-				let beaconPosition = self.beacon1Node.convertPosition(SCNVector3Zero, to: nil)
+			for beacon in self.beacons {
+				let beaconPosition = beacon.node.convertPosition(SCNVector3Zero, to: nil)
 				let projectedPoint = renderer.projectPoint(beaconPosition)
 				let projectedCGPoint = CGPoint(x: CGFloat(projectedPoint.x), y: CGFloat(projectedPoint.y))
-				let distance = projectedCGPoint.distance(to: center)
+				let distance = projectedCGPoint.distance(to: focusPoint)
 				
-				if distance < 100 {
+				if distance < SimViewController.focusRadius {
 					if let beaconFocus = beaconFocus {
-						if beaconFocus.node == beaconNode,
+						if beaconFocus.beacon.node == beacon.node,
 							Date().timeIntervalSince(beaconFocus.focusDate) > SimViewController.focusDuration {
-							activeBeaconNode = beaconNode
+							activeBeacon = beacon
 							self.beaconFocus = nil
 						}
 					} else {
-						self.beaconFocus = BeaconFocus(node: beaconNode, focusDate: Date())
+						self.beaconFocus = BeaconFocus(beacon: beacon, focusDate: Date())
 					}
 					
 					//					self.beaconFocus = BeaconFocus(node: <#T##BeaconNode?#>, focusDate: Date())
 				} else {
 					if let beaconFocus = beaconFocus,
-						beaconFocus.node == beaconNode {
+						beaconFocus.beacon.node == beacon.node {
 						self.beaconFocus = nil
 					}
 				}

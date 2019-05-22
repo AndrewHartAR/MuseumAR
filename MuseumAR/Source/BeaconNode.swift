@@ -115,7 +115,7 @@ class BeaconNode: ScaleNode {
 	}
 	
 	func animateToAttention() {
-		let scaleTubeAction = SCNAction.scale(to: 2, duration: 0.2)
+		let scaleTubeAction = SCNAction.scale(to: 1.6, duration: 0.2)
 		ringTubeNode.runAction(scaleTubeAction)
 	}
 	
