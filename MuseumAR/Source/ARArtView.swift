@@ -10,11 +10,21 @@ import UIKit
 import ARKit
 
 class ARArtView: UIView {
-	private let sceneView = ARSCNView()
+	let sceneView = ARSCNView()
 	
-	private let artworkNode = SCNNode()
+	var artwork: Artwork? {
+		didSet {
+			oldValue?.node.removeFromParentNode()
+			sceneBeacons.removeAll()
+			
+			activeBeacon = nil
+			beaconFocus = nil
+			
+			setupArtwork()
+		}
+	}
 	
-	var beacons = [Beacon]()
+	private var sceneBeacons = [SceneBeacon]()
 	
 	private weak var activeBeacon: Beacon? {
 		didSet {
@@ -75,6 +85,12 @@ class ARArtView: UIView {
 	
 	private let detailView = DetailView()
 	
+	var focusPoint: CGPoint {
+		return CGPoint(
+			x: sceneView.bounds.size.width / 2,
+			y: sceneView.bounds.size.height - (sceneView.bounds.size.height / 1.618))
+	}
+	
 	init() {
 		super.init(frame: CGRect.zero)
 		
@@ -134,67 +150,33 @@ class ARArtView: UIView {
 		planeNode.position.z = -2
 		sceneView.scene.rootNode.addChildNode(planeNode)
 		
-		let artworkPlane = SCNPlane(width: 2.15, height: 1.13)
-		artworkPlane.firstMaterial?.diffuse.contents = UIColor.clear
-		artworkNode.geometry = artworkPlane
-		artworkNode.position.z = 0.01
-		planeNode.addChildNode(artworkNode)
+//		let artworkPlane = SCNPlane(width: 2.15, height: 1.13)
+//		artworkPlane.firstMaterial?.diffuse.contents = UIColor.clear
+//		
+//		let artworkNode = SCNNode()
+//		artworkNode.geometry = artworkPlane
+//		artworkNode.position.z = 0.01
+//		planeNode.addChildNode(artworkNode)
+//
+//		let beacon1Node = BeaconNode()
+//		beacon1Node.position.z = 0.01
+//		beacon1Node.position.x = -0.266
+//		beacon1Node.position.y = 0.112
+//		artworkNode.addChildNode(beacon1Node)
+//
+//		let beacon1 = Beacon(node: beacon1Node, contentTitle: "1759, A Year of Victories", contentSummary: "Admiral Sir Charles Saunders' powerful fleet anchored off the Ile d'Orleans on the St Lawrence River, below Quebec. At midnight, the French attacked with seven fire-ships and two fire-rafts. Saunders had received advance warning, and his men grappled the fire-vessels and towed them safely clear of his ships.")
+//		beacons.append(beacon1)
+//
+//		let beacon2Node = BeaconNode()
+//		beacon2Node.position.z = 0.01
+//		beacon2Node.position.x = 0.7436349079
+//		beacon2Node.position.y = -0.3356685348
+//		artworkNode.addChildNode(beacon2Node)
+//
+//		let beacon2 = Beacon(node: beacon2Node, contentTitle: "The Burning Fire-ships", contentSummary: "The British lie at anchor with Saunders' flagship the 'Stirling Castle', in port-bow view in the foreground. Immediately astern of her a ship appears to have cut her cable and is heading downstream.")
+//		beacons.append(beacon2)
 		
-		let beacon1Node = BeaconNode()
-		beacon1Node.position.z = 0.01
-		beacon1Node.position.x = -0.266
-		beacon1Node.position.y = 0.112
-		artworkNode.addChildNode(beacon1Node)
-		
-		let beacon1 = Beacon(node: beacon1Node, contentTitle: "1759, A Year of Victories", contentSummary: "Admiral Sir Charles Saunders' powerful fleet anchored off the Ile d'Orleans on the St Lawrence River, below Quebec. At midnight, the French attacked with seven fire-ships and two fire-rafts. Saunders had received advance warning, and his men grappled the fire-vessels and towed them safely clear of his ships.")
-		beacons.append(beacon1)
-		
-		let beacon2Node = BeaconNode()
-		beacon2Node.position.z = 0.01
-		beacon2Node.position.x = 0.7436349079
-		beacon2Node.position.y = -0.3356685348
-		artworkNode.addChildNode(beacon2Node)
-		
-		let beacon2 = Beacon(node: beacon2Node, contentTitle: "The Burning Fire-ships", contentSummary: "The British lie at anchor with Saunders' flagship the 'Stirling Castle', in port-bow view in the foreground. Immediately astern of her a ship appears to have cut her cable and is heading downstream.")
-		beacons.append(beacon2)
-		
-		let label = UILabel()
-		label.text = "French Fire Rafts Attacking the English Fleet off Quebec"
-		label.font = UIFont.boldSystemFont(ofSize: 18)
-		label.textAlignment = .center
-		label.textColor = UIColor.black
-		label.backgroundColor = UIColor.clear
-		label.numberOfLines = 0
-		label.frame.size = label.sizeThatFits(CGSize(width: 280, height: CGFloat.greatestFiniteMagnitude))
-		
-		let subheadingLabel = UILabel()
-		subheadingLabel.text = "28 June 1759, Samuel Scott"
-		subheadingLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-		subheadingLabel.textAlignment = .center
-		subheadingLabel.textColor = UIColor(white: 0.35, alpha: 1.0)
-		subheadingLabel.backgroundColor = UIColor.clear
-		subheadingLabel.numberOfLines = 1
-		subheadingLabel.sizeToFit()
-		
-		titleView.addSubview(label)
-		titleView.addSubview(subheadingLabel)
-		titleView.frame.size = CGSize(
-			width: label.frame.size.width + (ARArtView.titleLabelInset * 2),
-			height: label.frame.size.height + ARArtView.titleLabelSubtitleDifference +
-				subheadingLabel.frame.size.height + (ARArtView.titleLabelInset * 2))
-		titleView.backgroundColor = UIColor.white
-		titleView.layer.cornerRadius = 18
-		label.center.x = titleView.frame.size.width / 2
-		label.frame.origin.y = ARArtView.titleLabelInset
-		subheadingLabel.center.x = titleView.frame.size.width / 2
-		subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
-			ARArtView.titleLabelSubtitleDifference
-		
-		titleNode = BillboardInterfaceNode(view: titleView)
-		titleNode.position.z = 0.05
-		titleNode.position.y = Float(-(artworkPlane.height * 0.5))
-		titleNode.opacity = 0.8
-		artworkNode.addChildNode(titleNode)
+
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -226,10 +208,59 @@ class ARArtView: UIView {
 		sceneView.session.pause()
 	}
 	
-	var focusPoint: CGPoint {
-		return CGPoint(
-			x: sceneView.bounds.size.width / 2,
-			y: sceneView.bounds.size.height - (sceneView.bounds.size.height / 1.618))
+	private func setupArtwork() {
+		guard let artwork = artwork else {
+			return
+		}
+		
+		for beacon in artwork.beacons {
+			let beaconNode = BeaconNode()
+			beaconNode.position = beacon.position
+			artwork.node.addChildNode(beaconNode)
+			
+			let sceneBeacon = SceneBeacon(node: beaconNode, beacon: beacon)
+			sceneBeacons.append(sceneBeacon)
+		}
+		
+		let label = UILabel()
+		label.text = artwork.title
+		label.font = UIFont.boldSystemFont(ofSize: 18)
+		label.textAlignment = .center
+		label.textColor = UIColor.black
+		label.backgroundColor = UIColor.clear
+		label.numberOfLines = 0
+		label.frame.size = label.sizeThatFits(CGSize(width: 280, height: CGFloat.greatestFiniteMagnitude))
+		
+		let subheadingLabel = UILabel()
+		subheadingLabel.text = "\(artwork.dateString), \(artwork.author)"
+		subheadingLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+		subheadingLabel.textAlignment = .center
+		subheadingLabel.textColor = UIColor(white: 0.35, alpha: 1.0)
+		subheadingLabel.backgroundColor = UIColor.clear
+		subheadingLabel.numberOfLines = 1
+		subheadingLabel.sizeToFit()
+		
+		titleView.addSubview(label)
+		titleView.addSubview(subheadingLabel)
+		titleView.frame.size = CGSize(
+			width: label.frame.size.width + (ARArtView.titleLabelInset * 2),
+			height: label.frame.size.height + ARArtView.titleLabelSubtitleDifference +
+				subheadingLabel.frame.size.height + (ARArtView.titleLabelInset * 2))
+		titleView.backgroundColor = UIColor.white
+		titleView.layer.cornerRadius = 18
+		label.center.x = titleView.frame.size.width / 2
+		label.frame.origin.y = ARArtView.titleLabelInset
+		subheadingLabel.center.x = titleView.frame.size.width / 2
+		subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
+			ARArtView.titleLabelSubtitleDifference
+		
+		titleNode = BillboardInterfaceNode(view: titleView)
+		titleNode.position.z = 0.05
+		titleNode.position.y = Float(-(artwork.height * 0.5))
+		titleNode.opacity = 0.8
+		artwork.node.addChildNode(titleNode)
+		
+		sceneView.scene.rootNode.addChildNode(artwork.node)
 	}
 	
 	func animateInMaskView() {
@@ -310,7 +341,7 @@ extension ARArtView: ARSCNViewDelegate {
 				self.maskViewCutoutView.center = projectedCGPoint
 				self.maskViewCutoutOutline.center = projectedCGPoint
 			} else {
-				for beacon in self.beacons {
+				for beacon in self.sceneBeacons {
 					let beaconPosition = beacon.node.convertPosition(SCNVector3Zero, to: nil)
 					let projectedPoint = renderer.projectPoint(beaconPosition)
 					let projectedCGPoint = CGPoint(x: CGFloat(projectedPoint.x), y: CGFloat(projectedPoint.y))
@@ -320,11 +351,11 @@ extension ARArtView: ARSCNViewDelegate {
 						if let beaconFocus = self.beaconFocus {
 							if beaconFocus.beacon.node == beacon.node,
 								Date().timeIntervalSince(beaconFocus.focusDate) > ARArtView.focusDuration {
-								self.activeBeacon = beacon
+								self.activeBeacon = beacon.beacon
 								self.beaconFocus = nil
 							}
 						} else {
-							self.beaconFocus = BeaconFocus(beacon: beacon, focusDate: Date())
+							self.beaconFocus = BeaconFocus(beacon: beacon.beacon, focusDate: Date())
 						}
 					} else {
 						if let beaconFocus = self.beaconFocus,

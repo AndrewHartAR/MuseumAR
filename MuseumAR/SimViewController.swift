@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 class SimViewController: UIViewController {
 	let artView = ARArtView()
@@ -14,6 +15,18 @@ class SimViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		let node = SCNNode()
+		node.position.z = -2
+		
+		let artwork = Artwork(
+			node: node,
+			width: 2.15,
+			height: 1.13,
+			beacons: [],
+			title: "French Fire Rafts Attacking the English Fleet off Quebec",
+			dateString: "28 June 1759",
+			author: "Samuel Scott")
+		artView.artwork = artwork
 		view.addSubview(artView)
     }
     
