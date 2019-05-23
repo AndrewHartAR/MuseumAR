@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailViewDelegate: class {
+	func detailViewWasDismissed(detailView: DetailView)
+}
+
 class DetailView: UIView {
 	var title: String? {
 		set {
@@ -27,10 +31,16 @@ class DetailView: UIView {
 		}
 	}
 	
+	weak var delegate: DetailViewDelegate?
+	
 	private var titleView = UILabel()
 	private var summaryView = UILabel()
 	
+	private var dismissView = UILabel()
+	
 	private static let contentInset: CGFloat = 24
+	
+	private let button = UIButton()
 	
 	init() {
 		super.init(frame: CGRect.zero)
@@ -44,6 +54,15 @@ class DetailView: UIView {
 		summaryView.textColor = UIColor.white
 		summaryView.numberOfLines = 0
 		addSubview(summaryView)
+		
+		dismissView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+		dismissView.text = "TAP TO DISMISS"
+		dismissView.textColor = UIColor.white
+		dismissView.sizeToFit()
+		addSubview(dismissView)
+		
+		button.addTarget(self, action: #selector(respondToButtonTapped), for: .touchUpInside)
+		addSubview(button)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -60,7 +79,11 @@ class DetailView: UIView {
 		titleView.frame.size = titleView.sizeThatFits(maxSize)
 		summaryView.frame.size = summaryView.sizeThatFits(maxSize)
 		
-		let summaryViewY = frame.size.height - DetailView.contentInset - safeAreaInsets.bottom - summaryView.frame.size.height
+		let dismissViewY = frame.size.height - DetailView.contentInset - safeAreaInsets.bottom - dismissView.frame.size.height
+		
+		dismissView.frame.origin = CGPoint(x: DetailView.contentInset, y: dismissViewY)
+		
+		let summaryViewY = dismissView.frame.origin.y - DetailView.contentInset - summaryView.frame.size.height
 		
 		summaryView.frame = CGRect(
 			x: DetailView.contentInset,
@@ -72,5 +95,11 @@ class DetailView: UIView {
 			x: DetailView.contentInset,
 			y: summaryViewY - DetailView.contentInset - titleView.frame.size.height,
 			width: titleView.frame.size.width, height: titleView.frame.size.height)
+		
+		button.frame = bounds
+	}
+	
+	@objc func respondToButtonTapped() {
+		delegate?.detailViewWasDismissed(detailView: self)
 	}
 }

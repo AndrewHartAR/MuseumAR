@@ -159,6 +159,7 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		sceneView.addSubview(maskViewCutoutOutline)
 		
 		detailView.isHidden = true
+		detailView.delegate = self
 		view.addSubview(detailView)
 		
 		let plane = SCNPlane(width: 3.367, height: 2.509)
@@ -408,5 +409,11 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 				billboardNode.billboardContentNode.eulerAngles.x = -headingFromNode.vertical
 			}
 		}
+	}
+}
+
+extension SimViewController: DetailViewDelegate {
+	func detailViewWasDismissed(detailView: DetailView) {
+		activeBeacon = nil
 	}
 }
