@@ -20,6 +20,25 @@
 		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
 		49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
 		49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECDA2294A7EF00D39B19 /* DetailView.swift */; };
+		49D74C592296AB1300EDBDF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D74C582296AB1300EDBDF9 /* AppDelegate.swift */; };
+		49D74C5B2296AB1300EDBDF9 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D74C5A2296AB1300EDBDF9 /* LiveViewController.swift */; };
+		49D74C5E2296AB1300EDBDF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D74C5C2296AB1300EDBDF9 /* Main.storyboard */; };
+		49D74C602296AB1500EDBDF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D74C5F2296AB1500EDBDF9 /* Assets.xcassets */; };
+		49D74C632296AB1500EDBDF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D74C612296AB1500EDBDF9 /* LaunchScreen.storyboard */; };
+		49D74C682296AB8900EDBDF9 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
+		49D74C692296AB8900EDBDF9 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
+		49D74C6A2296AB8900EDBDF9 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */; };
+		49D74C6B2296AB8900EDBDF9 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */; };
+		49D74C6C2296AB8900EDBDF9 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD7C22968D2600F3AE3A /* Beacon.swift */; };
+		49D74C6D2296AB8900EDBDF9 /* BeaconFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD7E22968D3800F3AE3A /* BeaconFocus.swift */; };
+		49D74C6E2296AB8900EDBDF9 /* BeaconNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028442292BF5D0001E7E3 /* BeaconNode.swift */; };
+		49D74C6F2296AB8900EDBDF9 /* ScaleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495028482292D34D0001E7E3 /* ScaleNode.swift */; };
+		49D74C702296AB8900EDBDF9 /* ScalingInterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */; };
+		49D74C712296AB8900EDBDF9 /* BillboardableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B238E229312FC00C4F778 /* BillboardableNode.swift */; };
+		49D74C722296AB8900EDBDF9 /* BillboardInterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD7A22968D0E00F3AE3A /* BillboardInterfaceNode.swift */; };
+		49D74C732296AB8900EDBDF9 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD8022968DAC00F3AE3A /* Artwork.swift */; };
+		49D74C742296AB8900EDBDF9 /* ARArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD78229688A600F3AE3A /* ARArtView.swift */; };
+		49D74C752296AB8900EDBDF9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECDA2294A7EF00D39B19 /* DetailView.swift */; };
 		49E8FD79229688A600F3AE3A /* ARArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD78229688A600F3AE3A /* ARArtView.swift */; };
 		49E8FD7B22968D0E00F3AE3A /* BillboardInterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD7A22968D0E00F3AE3A /* BillboardInterfaceNode.swift */; };
 		49E8FD7D22968D2600F3AE3A /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD7C22968D2600F3AE3A /* Beacon.swift */; };
@@ -43,6 +62,13 @@
 		49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECDA2294A7EF00D39B19 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		49D74C562296AB1300EDBDF9 /* MuseumARLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumARLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D74C582296AB1300EDBDF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49D74C5A2296AB1300EDBDF9 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
+		49D74C5D2296AB1300EDBDF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49D74C5F2296AB1500EDBDF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49D74C622296AB1500EDBDF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49D74C642296AB1500EDBDF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49E8FD78229688A600F3AE3A /* ARArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARArtView.swift; sourceTree = "<group>"; };
 		49E8FD7A22968D0E00F3AE3A /* BillboardInterfaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardInterfaceNode.swift; sourceTree = "<group>"; };
 		49E8FD7C22968D2600F3AE3A /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -58,13 +84,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49D74C532296AB1300EDBDF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		49A0320D2289E96100FE1D39 = {
 			isa = PBXGroup;
 			children = (
+				49A0322F2289FCF600FE1D39 /* Source */,
 				49A032182289E96100FE1D39 /* MuseumAR */,
+				49D74C572296AB1300EDBDF9 /* MuseumARLive */,
 				49A032172289E96100FE1D39 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				49A032162289E96100FE1D39 /* MuseumARSim.app */,
+				49D74C562296AB1300EDBDF9 /* MuseumARLive.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,7 +116,6 @@
 		49A032182289E96100FE1D39 /* MuseumAR */ = {
 			isa = PBXGroup;
 			children = (
-				49A0322F2289FCF600FE1D39 /* Source */,
 				49A032192289E96100FE1D39 /* AppDelegate.swift */,
 				49A0321D2289E96100FE1D39 /* SimViewController.swift */,
 				49A032222289E96300FE1D39 /* Assets.xcassets */,
@@ -111,6 +146,19 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		49D74C572296AB1300EDBDF9 /* MuseumARLive */ = {
+			isa = PBXGroup;
+			children = (
+				49D74C582296AB1300EDBDF9 /* AppDelegate.swift */,
+				49D74C5A2296AB1300EDBDF9 /* LiveViewController.swift */,
+				49D74C5C2296AB1300EDBDF9 /* Main.storyboard */,
+				49D74C5F2296AB1500EDBDF9 /* Assets.xcassets */,
+				49D74C612296AB1500EDBDF9 /* LaunchScreen.storyboard */,
+				49D74C642296AB1500EDBDF9 /* Info.plist */,
+			);
+			path = MuseumARLive;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,6 +179,23 @@
 			productReference = 49A032162289E96100FE1D39 /* MuseumARSim.app */;
 			productType = "com.apple.product-type.application";
 		};
+		49D74C552296AB1300EDBDF9 /* MuseumARLive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49D74C652296AB1500EDBDF9 /* Build configuration list for PBXNativeTarget "MuseumARLive" */;
+			buildPhases = (
+				49D74C522296AB1300EDBDF9 /* Sources */,
+				49D74C532296AB1300EDBDF9 /* Frameworks */,
+				49D74C542296AB1300EDBDF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MuseumARLive;
+			productName = MuseumARLive;
+			productReference = 49D74C562296AB1300EDBDF9 /* MuseumARLive.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -142,6 +207,9 @@
 				ORGANIZATIONNAME = "Dent Reality";
 				TargetAttributes = {
 					49A032152289E96100FE1D39 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					49D74C552296AB1300EDBDF9 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -160,6 +228,7 @@
 			projectRoot = "";
 			targets = (
 				49A032152289E96100FE1D39 /* MuseumARSim */,
+				49D74C552296AB1300EDBDF9 /* MuseumARLive */,
 			);
 		};
 /* End PBXProject section */
@@ -171,6 +240,16 @@
 			files = (
 				49A032262289E96300FE1D39 /* LaunchScreen.storyboard in Resources */,
 				49A032232289E96300FE1D39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49D74C542296AB1300EDBDF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49D74C632296AB1500EDBDF9 /* LaunchScreen.storyboard in Resources */,
+				49D74C602296AB1500EDBDF9 /* Assets.xcassets in Resources */,
+				49D74C5E2296AB1300EDBDF9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +279,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49D74C522296AB1300EDBDF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49D74C682296AB8900EDBDF9 /* FloatingPoint+Extensions.swift in Sources */,
+				49D74C692296AB8900EDBDF9 /* CGPoint+Extensions.swift in Sources */,
+				49D74C6A2296AB8900EDBDF9 /* SCNNode+Extensions.swift in Sources */,
+				49D74C6B2296AB8900EDBDF9 /* SCNVector3+Extensions.swift in Sources */,
+				49D74C6C2296AB8900EDBDF9 /* Beacon.swift in Sources */,
+				49D74C6D2296AB8900EDBDF9 /* BeaconFocus.swift in Sources */,
+				49D74C6E2296AB8900EDBDF9 /* BeaconNode.swift in Sources */,
+				49D74C6F2296AB8900EDBDF9 /* ScaleNode.swift in Sources */,
+				49D74C702296AB8900EDBDF9 /* ScalingInterfaceNode.swift in Sources */,
+				49D74C712296AB8900EDBDF9 /* BillboardableNode.swift in Sources */,
+				49D74C722296AB8900EDBDF9 /* BillboardInterfaceNode.swift in Sources */,
+				49D74C732296AB8900EDBDF9 /* Artwork.swift in Sources */,
+				49D74C742296AB8900EDBDF9 /* ARArtView.swift in Sources */,
+				49D74C752296AB8900EDBDF9 /* DetailView.swift in Sources */,
+				49D74C5B2296AB1300EDBDF9 /* LiveViewController.swift in Sources */,
+				49D74C592296AB1300EDBDF9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -207,6 +309,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				49A032252289E96300FE1D39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		49D74C5C2296AB1300EDBDF9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49D74C5D2296AB1300EDBDF9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49D74C612296AB1500EDBDF9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49D74C622296AB1500EDBDF9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -366,6 +484,42 @@
 			};
 			name = Release;
 		};
+		49D74C662296AB1500EDBDF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 344R59CSRM;
+				INFOPLIST_FILE = MuseumARLive/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DentReality.MuseumARLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49D74C672296AB1500EDBDF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 344R59CSRM;
+				INFOPLIST_FILE = MuseumARLive/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DentReality.MuseumARLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -383,6 +537,15 @@
 			buildConfigurations = (
 				49A0322B2289E96300FE1D39 /* Debug */,
 				49A0322C2289E96300FE1D39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49D74C652296AB1500EDBDF9 /* Build configuration list for PBXNativeTarget "MuseumARLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49D74C662296AB1500EDBDF9 /* Debug */,
+				49D74C672296AB1500EDBDF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
