@@ -19,15 +19,13 @@ class SceneBeacon {
 }
 
 class Beacon {
-	var node: BeaconNode
 	var contentTitle: String
 	var contentSummary: String
 	
 	///Position on the artwork, measured from the middle, in meters
 	var position: SCNVector3
 	
-	init(node: BeaconNode, contentTitle: String, contentSummary: String, position: SCNVector3) {
-		self.node = node
+	init(contentTitle: String, contentSummary: String, position: SCNVector3) {
 		self.contentTitle = contentTitle
 		self.contentSummary = contentSummary
 		self.position = position

@@ -15,14 +15,28 @@ class SimViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let node = SCNNode()
-		node.position.z = -2
+		var beacons = [Beacon]()
+		
+		let beacon1 = Beacon(
+			contentTitle: "1759, A Year of Victories",
+			contentSummary: "Admiral Sir Charles Saunders' powerful fleet anchored off the Ile d'Orleans on the St Lawrence River, below Quebec. At midnight, the French attacked with seven fire-ships and two fire-rafts. Saunders had received advance warning, and his men grappled the fire-vessels and towed them safely clear of his ships.",
+			position: SCNVector3(-0.27, 0.11, 0))
+		beacons.append(beacon1)
+		
+		let beacon2 = Beacon(
+			contentTitle: "The Burning Fire-ships",
+			contentSummary: "The British lie at anchor with Saunders' flagship the 'Stirling Castle', in port-bow view in the foreground. Immediately astern of her a ship appears to have cut her cable and is heading downstream.",
+			position: SCNVector3(0.74, -0.34, 0))
+		beacons.append(beacon2)
+		
+		let artworkNode = SCNNode()
+		artworkNode.position.z = -2
 		
 		let artwork = Artwork(
-			node: node,
+			node: artworkNode,
 			width: 2.15,
 			height: 1.13,
-			beacons: [],
+			beacons: beacons,
 			title: "French Fire Rafts Attacking the English Fleet off Quebec",
 			dateString: "28 June 1759",
 			author: "Samuel Scott")

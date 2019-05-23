@@ -9,6 +9,6 @@
 import Foundation
 
 struct BeaconFocus {
-	var beacon: Beacon
+	var beacon: SceneBeacon
 	var focusDate = Date()
 }
