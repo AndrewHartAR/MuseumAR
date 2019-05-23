@@ -21,6 +21,7 @@
 		49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */; };
 		49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
 		49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECDA2294A7EF00D39B19 /* DetailView.swift */; };
+		49E8FD79229688A600F3AE3A /* ARArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD78229688A600F3AE3A /* ARArtView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimBackgroundImage.swift; sourceTree = "<group>"; };
 		49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECDA2294A7EF00D39B19 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		49E8FD78229688A600F3AE3A /* ARArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARArtView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				494B238E229312FC00C4F778 /* BillboardableNode.swift */,
 				4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */,
 				49C7ECDA2294A7EF00D39B19 /* DetailView.swift */,
+				49E8FD78229688A600F3AE3A /* ARArtView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				4950284B2292EA810001E7E3 /* SCNNode+Extensions.swift in Sources */,
 				49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */,
 				49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */,
+				49E8FD79229688A600F3AE3A /* ARArtView.swift in Sources */,
 				495028492292D34D0001E7E3 /* ScaleNode.swift in Sources */,
 				495028472292D2DD0001E7E3 /* SCNVector3+Extensions.swift in Sources */,
 				49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */,
