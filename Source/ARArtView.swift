@@ -12,7 +12,7 @@ import ARKit
 class ARArtView: UIView {
 	let sceneView = ARSCNView()
 	
-	var artwork: Artwork? {
+	var sceneArtwork: SceneArtwork? {
 		didSet {
 			oldValue?.node.removeFromParentNode()
 			sceneBeacons.removeAll()

@@ -44,14 +44,16 @@ class SimViewController: UIViewController {
 		artworkNode.position.z = -2
 		
 		let artwork = Artwork(
-			node: artworkNode,
 			width: 2.15,
 			height: 1.13,
 			beacons: beacons,
 			title: "French Fire Rafts Attacking the English Fleet off Quebec",
 			dateString: "28 June 1759",
 			author: "Samuel Scott")
-		artView.artwork = artwork
+		
+		let sceneArtwork = SceneArtwork(artwork: artwork, node: artworkNode)
+		
+		artView.sceneArtwork = sceneArtwork
 		view.addSubview(artView)
     }
     

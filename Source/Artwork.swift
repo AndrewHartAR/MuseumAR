@@ -9,20 +9,20 @@
 import Foundation
 import SceneKit
 
-//class SceneArtwork {
-//	var node: SCNNode
-//	var artwork: Artwork
-//	
-//	init(artwork: Artwork, node: SCNNode) {
-//		self.artwork = artwork
-//		self.node = node
-//	}
-//}
+class SceneArtwork {
+	var node: SCNNode
+	var artwork: Artwork
+	
+	init(artwork: Artwork, node: SCNNode) {
+		self.artwork = artwork
+		self.node = node
+	}
+}
 
 struct Artwork {
 	///A node representing the artwork
 	///Doesn't necessarily represent it visually, but represents its' position in space
-	var node: SCNNode
+//	var node: SCNNode
 	
 	///Width of the artwork in meters
 	var width: Float
