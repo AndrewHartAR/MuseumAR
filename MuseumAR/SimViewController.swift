@@ -7,45 +7,9 @@
 //
 
 import UIKit
-import SceneKit
-import ARKit
 
-class BillboardInterfaceNode: ScalingInterfaceNode, BillboardableNode {
-	var directions: [BillboardDirection] = [.vertical]
-	
-	var billboardContentNode = SCNNode()
-	
-	override init(view: UIView) {
-		super.init(view: view)
-		
-		billboardContentNode = contentNode
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-}
-
-class Beacon {
-	var node: BeaconNode
-	var contentTitle: String
-	var contentSummary: String
-	
-	init(node: BeaconNode, contentTitle: String, contentSummary: String) {
-		self.node = node
-		self.contentTitle = contentTitle
-		self.contentSummary = contentSummary
-	}
-}
-
-struct BeaconFocus {
-	var beacon: Beacon
-	var focusDate = Date()
-}
-
-class SimViewController: UIViewController, ARSCNViewDelegate {
+class SimViewController: UIViewController {
 	let artView = ARArtView()
-	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
