@@ -48,8 +48,6 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 	
 	let artworkNode = SCNNode()
 	
-	let beacon1Node = BeaconNode()
-	
 	var beacons = [Beacon]()
 	
 	weak var activeBeacon: Beacon? {
@@ -176,13 +174,23 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 		artworkNode.position.z = 0.01
 		planeNode.addChildNode(artworkNode)
 		
+		let beacon1Node = BeaconNode()
 		beacon1Node.position.z = 0.01
 		beacon1Node.position.x = -0.266
 		beacon1Node.position.y = 0.112
 		artworkNode.addChildNode(beacon1Node)
 		
-		let beacon1 = Beacon(node: beacon1Node, contentTitle: "Heading", contentSummary: "This is some content which I expect will extend for several lines as I attempt to explain my position on what this content is really about.")
+		let beacon1 = Beacon(node: beacon1Node, contentTitle: "1759, A Year of Victories", contentSummary: "Admiral Sir Charles Saunders' powerful fleet anchored off the Ile d'Orleans on the St Lawrence River, below Quebec. At midnight, the French attacked with seven fire-ships and two fire-rafts. Saunders had received advance warning, and his men grappled the fire-vessels and towed them safely clear of his ships.")
 		beacons.append(beacon1)
+		
+		let beacon2Node = BeaconNode()
+		beacon2Node.position.z = 0.01
+		beacon2Node.position.x = 0.7436349079
+		beacon2Node.position.y = -0.3356685348
+		artworkNode.addChildNode(beacon2Node)
+		
+		let beacon2 = Beacon(node: beacon2Node, contentTitle: "The Burning Fire-ships", contentSummary: "The British lie at anchor with Saunders' flagship the 'Stirling Castle', in port-bow view in the foreground. Immediately astern of her a ship appears to have cut her cable and is heading downstream.")
+		beacons.append(beacon2)
 		
 		let label = UILabel()
 		label.text = "French Fire Rafts Attacking the English Fleet off Quebec"
@@ -341,7 +349,7 @@ class SimViewController: UIViewController, ARSCNViewDelegate {
 			let focusPoint = self.focusPoint
 			
 			if let activeBeacon = self.activeBeacon {
-				let beaconPosition = self.beacon1Node.convertPosition(SCNVector3Zero, to: nil)
+				let beaconPosition = activeBeacon.node.convertPosition(SCNVector3Zero, to: nil)
 				
 				let projectedPoint = renderer.projectPoint(beaconPosition)
 				let projectedCGPoint = CGPoint(x: CGFloat(projectedPoint.x), y: CGFloat(projectedPoint.y))
