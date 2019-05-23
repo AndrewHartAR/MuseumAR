@@ -15,6 +15,17 @@ class SimViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		let paintingImage = UIImage(named: "image1")!
+		
+		artView.sceneView.scene.background.contents = UIColor.black
+		
+		let plane = SCNPlane(width: 3.367, height: 2.509)
+		plane.firstMaterial?.diffuse.contents = paintingImage
+		
+		let planeNode = SCNNode(geometry: plane)
+		planeNode.position.z = -2
+		artView.sceneView.scene.rootNode.addChildNode(planeNode)
+		
 		var beacons = [Beacon]()
 		
 		let beacon1 = Beacon(

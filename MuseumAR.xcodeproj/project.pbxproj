@@ -18,7 +18,6 @@
 		49A032232289E96300FE1D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A032222289E96300FE1D39 /* Assets.xcassets */; };
 		49A032262289E96300FE1D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A032242289E96300FE1D39 /* LaunchScreen.storyboard */; };
 		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
-		49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */; };
 		49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
 		49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECDA2294A7EF00D39B19 /* DetailView.swift */; };
 		49E8FD79229688A600F3AE3A /* ARArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8FD78229688A600F3AE3A /* ARArtView.swift */; };
@@ -42,7 +41,6 @@
 		49A032252289E96300FE1D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49A032272289E96300FE1D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
-		49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimBackgroundImage.swift; sourceTree = "<group>"; };
 		49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECDA2294A7EF00D39B19 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		49E8FD78229688A600F3AE3A /* ARArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARArtView.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */,
 				4950284A2292EA810001E7E3 /* SCNNode+Extensions.swift */,
 				495028462292D2DD0001E7E3 /* SCNVector3+Extensions.swift */,
-				49A032322289FD2D00FE1D39 /* SimBackgroundImage.swift */,
 				49E8FD7C22968D2600F3AE3A /* Beacon.swift */,
 				49E8FD7E22968D3800F3AE3A /* BeaconFocus.swift */,
 				495028442292BF5D0001E7E3 /* BeaconNode.swift */,
@@ -199,7 +196,6 @@
 				49E8FD7B22968D0E00F3AE3A /* BillboardInterfaceNode.swift in Sources */,
 				49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */,
 				494B238F229312FC00C4F778 /* BillboardableNode.swift in Sources */,
-				49A032332289FD2D00FE1D39 /* SimBackgroundImage.swift in Sources */,
 				4950284D2292EF670001E7E3 /* ScalingInterfaceNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
