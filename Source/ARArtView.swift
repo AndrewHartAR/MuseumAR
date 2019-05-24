@@ -72,7 +72,6 @@ class ARArtView: UIView {
 	//Allows us to reference the frame while not on the main thread
 	private var cachedBounds = CGRect.zero
 	
-	let titleView = UIView()
 	var titleNode: BillboardInterfaceNode!
 	
 //	let maskView = UIView()
@@ -180,45 +179,56 @@ class ARArtView: UIView {
 			sceneBeacons.append(sceneBeacon)
 		}
 		
-		let label = UILabel()
-		label.text = artwork.title
-		label.font = UIFont.boldSystemFont(ofSize: 18)
-		label.textAlignment = .center
-		label.textColor = UIColor.black
-		label.backgroundColor = UIColor.clear
-		label.numberOfLines = 0
-		label.frame.size = label.sizeThatFits(CGSize(width: 280, height: CGFloat.greatestFiniteMagnitude))
+		DispatchQueue.main.async {
+			let label = UILabel()
+			label.text = sceneArtwork.artwork.title
+			label.font = UIFont.boldSystemFont(ofSize: 18)
+			label.textAlignment = .center
+			label.textColor = UIColor.black
+			label.backgroundColor = UIColor.clear
+			label.numberOfLines = 0
+			label.frame.size = label.sizeThatFits(CGSize(width: 280, height: CGFloat.greatestFiniteMagnitude))
+			
+			let subheadingLabel = UILabel()
+			subheadingLabel.text = "\(sceneArtwork.artwork.dateString), \(sceneArtwork.artwork.author)"
+			subheadingLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+			subheadingLabel.textAlignment = .center
+			subheadingLabel.textColor = UIColor(white: 0.35, alpha: 1.0)
+			subheadingLabel.backgroundColor = UIColor.clear
+			subheadingLabel.numberOfLines = 1
+			subheadingLabel.sizeToFit()
+			
+			let titleView = UIView()
+			titleView.addSubview(label)
+			titleView.addSubview(subheadingLabel)
+			titleView.frame.size = CGSize(
+				width: ceil(label.frame.size.width + (ARArtView.titleLabelInset * 2)),
+				height: ceil(label.frame.size.height + ARArtView.titleLabelSubtitleDifference +
+					subheadingLabel.frame.size.height + (ARArtView.titleLabelInset * 2)))
+			titleView.backgroundColor = UIColor.white
+			titleView.layer.cornerRadius = 18
+			label.center.x = titleView.frame.size.width / 2
+			label.frame.origin.y = ARArtView.titleLabelInset
+			subheadingLabel.center.x = titleView.frame.size.width / 2
+			subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
+				ARArtView.titleLabelSubtitleDifference
+			
+			self.titleNode = BillboardInterfaceNode(view: titleView)
+			self.titleNode.position.z = 0.05
+			self.titleNode.position.y = Float(-(sceneArtwork.artwork.height * 0.5))
+			self.titleNode.opacity = 0.8
+			
+			let action = SCNAction.run() {
+				node in
+				node.addChildNode(self.titleNode)
+			}
+			
+			sceneArtwork.node.runAction(action)
+		}
 		
-		let subheadingLabel = UILabel()
-		subheadingLabel.text = "\(artwork.dateString), \(artwork.author)"
-		subheadingLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-		subheadingLabel.textAlignment = .center
-		subheadingLabel.textColor = UIColor(white: 0.35, alpha: 1.0)
-		subheadingLabel.backgroundColor = UIColor.clear
-		subheadingLabel.numberOfLines = 1
-		subheadingLabel.sizeToFit()
-		
-		titleView.addSubview(label)
-		titleView.addSubview(subheadingLabel)
-		titleView.frame.size = CGSize(
-			width: label.frame.size.width + (ARArtView.titleLabelInset * 2),
-			height: label.frame.size.height + ARArtView.titleLabelSubtitleDifference +
-				subheadingLabel.frame.size.height + (ARArtView.titleLabelInset * 2))
-		titleView.backgroundColor = UIColor.white
-		titleView.layer.cornerRadius = 18
-		label.center.x = titleView.frame.size.width / 2
-		label.frame.origin.y = ARArtView.titleLabelInset
-		subheadingLabel.center.x = titleView.frame.size.width / 2
-		subheadingLabel.frame.origin.y = label.frame.origin.y + label.frame.size.height +
-			ARArtView.titleLabelSubtitleDifference
-		
-		titleNode = BillboardInterfaceNode(view: titleView)
-		titleNode.position.z = 0.05
-		titleNode.position.y = Float(-(artwork.height * 0.5))
-		titleNode.opacity = 0.8
-		artwork.node.addChildNode(titleNode)
-		
-		sceneView.scene.rootNode.addChildNode(artwork.node)
+		if sceneArtwork.node.parent == nil {
+			self.sceneView.scene.rootNode.addChildNode(sceneArtwork.node)
+		}
 	}
 	
 	func animateInMaskView() {
