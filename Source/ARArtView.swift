@@ -85,6 +85,8 @@ class ARArtView: UIView {
 	
 	private static let focusRadius: CGFloat = 40
 	private static let focusDuration: Double = 0.8
+	private static let titleNodeStandardAlpha: Float = 0.8
+	private static let dotViewStandardAlpha: CGFloat = 0.8
 	
 	private let dotView = UIView()
 	
@@ -173,6 +175,7 @@ class ARArtView: UIView {
 		for beacon in sceneArtwork.artwork.beacons {
 			let beaconNode = BeaconNode()
 			beaconNode.position = beacon.position
+			beaconNode.animateIn(completion: nil)
 			sceneArtwork.node.addChildNode(beaconNode)
 			
 			let sceneBeacon = SceneBeacon(node: beaconNode, beacon: beacon)
@@ -216,7 +219,10 @@ class ARArtView: UIView {
 			self.titleNode = BillboardInterfaceNode(view: titleView)
 			self.titleNode.position.z = 0.05
 			self.titleNode.position.y = Float(-(sceneArtwork.artwork.height * 0.5))
-			self.titleNode.opacity = 0.8
+			self.titleNode.opacity = 0
+			
+			let fadeAction = SCNAction.fadeOpacity(to: CGFloat(ARArtView.titleNodeStandardAlpha), duration: 0.3)
+			self.titleNode.runAction(fadeAction)
 			
 			let action = SCNAction.run() {
 				node in
@@ -246,8 +252,6 @@ class ARArtView: UIView {
 			self.maskViewCutoutOutline.transform = CGAffineTransform(scaleX: 1, y: 1)
 		}, completion: nil)
 	}
-	
-	static let dotViewStandardAlpha: CGFloat = 0.8
 	
 	func animateOutMaskView() {
 		UIView.animate(withDuration: 0.2) {

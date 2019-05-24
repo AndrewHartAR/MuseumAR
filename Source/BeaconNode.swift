@@ -103,11 +103,11 @@ class BeaconNode: ScaleNode {
 		let fadeAction = SCNAction.fadeIn(duration: 0.4)
 		runAction(fadeAction)
 		
-		centralCylinderNode.scale = SCNVector3(0.1, 0.1, 0.1)
+		centralCylinderNode.scale = SCNVector3(0.01, 0.01, 0.01)
 		let scaleCylinderAction = SCNAction.scale(to: 1, duration: 0.15)
 		centralCylinderNode.runAction(scaleCylinderAction)
 		
-		ringTubeNode.scale = SCNVector3(0.1, 0.1, 0.1)
+		ringTubeNode.scale = SCNVector3(0.01, 0.01, 0.01)
 		let scaleTubeAction = SCNAction.scale(to: 1, duration: 0.4)
 		ringTubeNode.runAction(scaleTubeAction) {
 			completion?()
@@ -125,12 +125,12 @@ class BeaconNode: ScaleNode {
 			completion?()
 		}
 		
-		let scaleTubeAction = SCNAction.scale(to: 0.1, duration: 0.2)
+		let scaleTubeAction = SCNAction.scale(to: 0.01, duration: 0.2)
 		ringTubeNode.runAction(scaleTubeAction)
 		
-		let waitAction = SCNAction.wait(duration: 0.1)
+		let waitAction = SCNAction.wait(duration: 0.01)
 		self.centralCylinderNode.runAction(waitAction) {
-			let scaleCylinderAction = SCNAction.scale(to: 0.15, duration: 0.05)
+			let scaleCylinderAction = SCNAction.scale(to: 0.015, duration: 0.05)
 			self.centralCylinderNode.runAction(scaleCylinderAction)
 		}
 	}
