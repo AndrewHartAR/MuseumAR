@@ -44,8 +44,12 @@ class ScalingInterfaceNode: ScaleNode {
 		let bezierPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius)
 		bezierPath.flatness = 0.001
 		
+		//It's possible to use a view, but that causes lag when it's initially displayed,
+		//so we render it to an image instead.
+		let image = view.image()
+		
 		shape = SCNShape(path: bezierPath, extrusionDepth: 10)
-		shape?.firstMaterial?.diffuse.contents = view
+		shape?.firstMaterial?.diffuse.contents = image
 		shape?.insertMaterial(backSideMaterial, at: 1)
 		shape?.insertMaterial(backSideMaterial, at: 2)
 		
