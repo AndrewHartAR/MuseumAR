@@ -9,6 +9,10 @@
 import UIKit
 import ARKit
 
+protocol ARArtViewDelegate: class {
+	func artworkForDetectedImage(artView: ARArtView, image: ARReferenceImage) -> Artwork?
+}
+
 class ARArtView: UIView {
 	let sceneView = ARSCNView()
 	
@@ -62,6 +66,8 @@ class ARArtView: UIView {
 			}
 		}
 	}
+	
+	weak var delegate: ARArtViewDelegate?
 	
 	//Allows us to reference the frame while not on the main thread
 	private var cachedBounds = CGRect.zero
@@ -146,9 +152,10 @@ class ARArtView: UIView {
 	}
 	
 	//Should be called on viewDidAppear
-	func run() {
+	func run(detectionImages: Set<ARReferenceImage>?) {
 		// Create a session configuration
 		let configuration = ARWorldTrackingConfiguration()
+		configuration.detectionImages = detectionImages
 		
 		// Run the view's session
 		sceneView.session.run(configuration)
@@ -160,14 +167,14 @@ class ARArtView: UIView {
 	}
 	
 	private func setupArtwork() {
-		guard let artwork = artwork else {
+		guard let sceneArtwork = sceneArtwork else {
 			return
 		}
 		
-		for beacon in artwork.beacons {
+		for beacon in sceneArtwork.artwork.beacons {
 			let beaconNode = BeaconNode()
 			beaconNode.position = beacon.position
-			artwork.node.addChildNode(beaconNode)
+			sceneArtwork.node.addChildNode(beaconNode)
 			
 			let sceneBeacon = SceneBeacon(node: beaconNode, beacon: beacon)
 			sceneBeacons.append(sceneBeacon)
@@ -342,6 +349,32 @@ extension ARArtView: ARSCNViewDelegate {
 			if billboardNode.directions.contains(.vertical) {
 				billboardNode.billboardContentNode.eulerAngles.x = -headingFromNode.vertical
 			}
+		}
+	}
+	
+	func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+		guard let anchor = anchor as? ARImageAnchor else {
+			return
+		}
+		
+		if let anchor = anchor as? ARImageAnchor,
+			let artwork = delegate?.artworkForDetectedImage(artView: self, image: anchor.referenceImage) {
+			
+			self.sceneArtwork = SceneArtwork(artwork: artwork, node: node)
+		}
+	}
+	
+	func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+		node.eulerAngles.x -= Float(90).degreesToRadians
+		
+		guard let pov = sceneView.pointOfView else {
+			return
+		}
+	}
+	
+	func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+		guard let anchor = anchor as? ARImageAnchor else {
+			return
 		}
 	}
 }

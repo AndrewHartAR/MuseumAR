@@ -60,7 +60,7 @@ class SimViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 		
-		artView.run()
+		artView.run(detectionImages: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
