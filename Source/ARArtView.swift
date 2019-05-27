@@ -112,7 +112,6 @@ class ARArtView: UIView {
 		sceneView.scene.lightingEnvironment.contents = image
 		
 		phantomNode.position.z = -1
-		
 		phantomAnchorNode.addChildNode(phantomNode)
 		
 		phantomAnchorNode.eulerAngles.x = -Float(45).degreesToRadians
@@ -242,16 +241,32 @@ class ARArtView: UIView {
 			
 			let maxHeight = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
 			
-			let artworkScale = maxHeight / CGFloat(sceneArtwork.artwork.height)
+			let artworkScale = (maxHeight / CGFloat(sceneArtwork.artwork.height)) * 0.618
 			
 			let phantomArtworkPlane = SCNPlane(
-				width: CGFloat(sceneArtwork.artwork.width) * artworkScale,
-				height: CGFloat(sceneArtwork.artwork.height) * artworkScale)
+				width: CGFloat(sceneArtwork.artwork.width),
+				height: CGFloat(sceneArtwork.artwork.height))
 			phantomArtworkPlane.firstMaterial?.diffuse.contents = sceneArtwork.artwork.image
 			
-			let phantomArtworkNode = PhantomArtworkNode()
+			let phantomArtworkNode = SCNNode()
 			phantomArtworkNode.geometry = phantomArtworkPlane
-			self.phantomNode.contentNode.addChildNode(phantomArtworkNode)
+			
+			let phantomArtworkScaleNode = SCNNode()
+			phantomArtworkScaleNode.scale = SCNVector3(artworkScale, artworkScale, artworkScale)
+			phantomArtworkScaleNode.addChildNode(phantomArtworkNode)
+			
+			self.phantomNode.contentNode.addChildNode(phantomArtworkScaleNode)
+			
+			for beacon in sceneArtwork.artwork.beacons {
+				let beaconNode = BeaconNode()
+				beaconNode.position = beacon.position
+				beaconNode.position.z = 0.01
+				beaconNode.animateIn(completion: nil)
+				phantomArtworkNode.addChildNode(beaconNode)
+				
+				let sceneBeacon = SceneBeacon(node: beaconNode, beacon: beacon)
+				self.sceneBeacons.append(sceneBeacon)
+			}
 		}
 		
 		if sceneArtwork.node.parent == nil {
