@@ -92,7 +92,7 @@ class ARArtView: UIView {
 	private let detailView = DetailView()
 	
 	private let phantomAnchorNode = SCNNode()
-	private let phantomNode = BillboardNode(directions: [.horizontal, .vertical])
+	private let phantomNode = PhantomArtworkNode()
 	
 	var focusPoint: CGPoint {
 		return CGPoint(
@@ -115,7 +115,7 @@ class ARArtView: UIView {
 		
 		phantomAnchorNode.addChildNode(phantomNode)
 		
-		phantomAnchorNode.eulerAngles.x = -Float(60).degreesToRadians
+		phantomAnchorNode.eulerAngles.x = -Float(45).degreesToRadians
 		sceneView.scene.rootNode.addChildNode(phantomAnchorNode)
 		
 		sceneView.mask = UIView()
@@ -239,15 +239,20 @@ class ARArtView: UIView {
 			}
 			
 			sceneArtwork.node.runAction(action)
+			
+			let maxHeight = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+			
+			let artworkScale = maxHeight / CGFloat(sceneArtwork.artwork.height)
+			
+			let phantomArtworkPlane = SCNPlane(
+				width: CGFloat(sceneArtwork.artwork.width) * artworkScale,
+				height: CGFloat(sceneArtwork.artwork.height) * artworkScale)
+			phantomArtworkPlane.firstMaterial?.diffuse.contents = sceneArtwork.artwork.image
+			
+			let phantomArtworkNode = PhantomArtworkNode()
+			phantomArtworkNode.geometry = phantomArtworkPlane
+			self.phantomNode.contentNode.addChildNode(phantomArtworkNode)
 		}
-		
-		let phantomArtworkPlane = SCNPlane(
-			width: CGFloat(sceneArtwork.artwork.width),
-			height: CGFloat(sceneArtwork.artwork.height))
-		phantomArtworkPlane.firstMaterial?.diffuse.contents = sceneArtwork.artwork.image
-
-		let phantomArtworkNode = SCNNode(geometry: phantomArtworkPlane)
-		phantomNode.billboardContentNode.addChildNode(phantomArtworkNode)
 		
 		if sceneArtwork.node.parent == nil {
 			self.sceneView.scene.rootNode.addChildNode(sceneArtwork.node)
@@ -292,6 +297,16 @@ extension ARArtView: ARSCNViewDelegate {
 		guard let currentFrame = sceneView.session.currentFrame,
 			let pov = sceneView.pointOfView else {
 				return
+		}
+		
+		phantomAnchorNode.position = pov.position
+		
+		if let sceneArtwork = sceneArtwork {
+			let rootNodePositionToNode = sceneView.scene.rootNode.convertPosition(SCNVector3Zero, from: sceneArtwork.node)
+			let povPositionToNode = rootNodePositionToNode - pov.position
+			
+			let povHeadingToNode = SCNVector3Zero.heading(to: povPositionToNode)
+			phantomAnchorNode.eulerAngles.y = -povHeadingToNode.horizontal
 		}
 		
 		let imageResolution = currentFrame.camera.imageResolution
