@@ -100,6 +100,8 @@ class ARArtView: UIView {
 			y: sceneView.bounds.size.height - (sceneView.bounds.size.height / 1.618))
 	}
 	
+	var isDisplayingPhantomArtwork = false
+	
 	init() {
 		super.init(frame: CGRect.zero)
 		
@@ -112,6 +114,7 @@ class ARArtView: UIView {
 		sceneView.scene.lightingEnvironment.contents = image
 		
 		phantomNode.position.z = -1
+		phantomNode.opacity = 0
 		phantomAnchorNode.addChildNode(phantomNode)
 		
 		phantomAnchorNode.eulerAngles.x = -Float(45).degreesToRadians
@@ -312,6 +315,20 @@ extension ARArtView: ARSCNViewDelegate {
 		guard let currentFrame = sceneView.session.currentFrame,
 			let pov = sceneView.pointOfView else {
 				return
+		}
+		
+		if !isDisplayingPhantomArtwork && pov.eulerAngles.x < Float(-45).degreesToRadians {
+			//Display phantom artwork
+			isDisplayingPhantomArtwork = true
+			
+			let fadeAction = SCNAction.fadeIn(duration: 0.35)
+			phantomNode.runAction(fadeAction)
+		} else if isDisplayingPhantomArtwork && pov.eulerAngles.x > Float(-20).degreesToRadians {
+			//Hide phantom artwork
+			isDisplayingPhantomArtwork = false
+			
+			let fadeAction = SCNAction.fadeOut(duration: 0.35)
+			phantomNode.runAction(fadeAction)
 		}
 		
 		phantomAnchorNode.position = pov.position
