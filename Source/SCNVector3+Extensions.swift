@@ -48,4 +48,20 @@ public extension SCNVector3 {
 	public func distance(to point: SCNVector3) -> Float {
 		return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2) + pow(self.z - point.z, 2))
 	}
+	
+	public static func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+		return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
+	}
+	
+	public static func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+		return SCNVector3Make(left.x - right.x, left.y - right.y, left.z - right.z)
+	}
+	
+	public static func / (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+		return SCNVector3Make(left.x / right.x, left.y / right.y, left.z / right.z)
+	}
+	
+	public static func * (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+		return SCNVector3Make(left.x * right.x, left.y * right.y, left.z * right.z)
+	}
 }

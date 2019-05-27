@@ -66,7 +66,8 @@ extension LiveViewController: ARArtViewDelegate {
 			beacons: beacons,
 			title: "French Fire Rafts Attacking the English Fleet off Quebec",
 			dateString: "28 June 1759",
-			author: "Samuel Scott")
+			author: "Samuel Scott",
+			image: UIImage(named: "painting-image")!)
 		
 		return artwork
 	}

@@ -22,6 +22,8 @@
 		49A0322E2289FCF000FE1D39 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */; };
 		49C7ECBB22945CFC00D39B19 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */; };
 		49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7ECDA2294A7EF00D39B19 /* DetailView.swift */; };
+		49C840C0229BF104000807E1 /* BillboardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C840BF229BF104000807E1 /* BillboardNode.swift */; };
+		49C840C1229BF104000807E1 /* BillboardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C840BF229BF104000807E1 /* BillboardNode.swift */; };
 		49D74C592296AB1300EDBDF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D74C582296AB1300EDBDF9 /* AppDelegate.swift */; };
 		49D74C5B2296AB1300EDBDF9 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D74C5A2296AB1300EDBDF9 /* LiveViewController.swift */; };
 		49D74C5E2296AB1300EDBDF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D74C5C2296AB1300EDBDF9 /* Main.storyboard */; };
@@ -65,6 +67,7 @@
 		49A0322D2289FCF000FE1D39 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECBA22945CFC00D39B19 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		49C7ECDA2294A7EF00D39B19 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		49C840BF229BF104000807E1 /* BillboardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardNode.swift; sourceTree = "<group>"; };
 		49D74C562296AB1300EDBDF9 /* MuseumARLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumARLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D74C582296AB1300EDBDF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D74C5A2296AB1300EDBDF9 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 				495028482292D34D0001E7E3 /* ScaleNode.swift */,
 				4950284C2292EF670001E7E3 /* ScalingInterfaceNode.swift */,
 				494B238E229312FC00C4F778 /* BillboardableNode.swift */,
+				49C840BF229BF104000807E1 /* BillboardNode.swift */,
 				49E8FD7A22968D0E00F3AE3A /* BillboardInterfaceNode.swift */,
 				49E8FD8022968DAC00F3AE3A /* Artwork.swift */,
 				49E8FD78229688A600F3AE3A /* ARArtView.swift */,
@@ -267,6 +271,7 @@
 				4950284B2292EA810001E7E3 /* SCNNode+Extensions.swift in Sources */,
 				49C7ECDB2294A7EF00D39B19 /* DetailView.swift in Sources */,
 				49E8FD7D22968D2600F3AE3A /* Beacon.swift in Sources */,
+				49C840C0229BF104000807E1 /* BillboardNode.swift in Sources */,
 				49A0321E2289E96100FE1D39 /* SimViewController.swift in Sources */,
 				49E8FD7F22968D3800F3AE3A /* BeaconFocus.swift in Sources */,
 				49E8FD79229688A600F3AE3A /* ARArtView.swift in Sources */,
@@ -291,6 +296,7 @@
 				49D74C682296AB8900EDBDF9 /* FloatingPoint+Extensions.swift in Sources */,
 				49D74C692296AB8900EDBDF9 /* CGPoint+Extensions.swift in Sources */,
 				49D74C6A2296AB8900EDBDF9 /* SCNNode+Extensions.swift in Sources */,
+				49C840C1229BF104000807E1 /* BillboardNode.swift in Sources */,
 				49D74C6B2296AB8900EDBDF9 /* SCNVector3+Extensions.swift in Sources */,
 				49D74C6C2296AB8900EDBDF9 /* Beacon.swift in Sources */,
 				49D74C6D2296AB8900EDBDF9 /* BeaconFocus.swift in Sources */,

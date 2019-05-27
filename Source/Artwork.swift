@@ -36,4 +36,5 @@ struct Artwork {
 	var title: String
 	var dateString: String
 	var author: String
+	var image: UIImage
 }

@@ -74,7 +74,6 @@ class ARArtView: UIView {
 	
 	var titleNode: BillboardInterfaceNode!
 	
-//	let maskView = UIView()
 	let maskViewCutoutView = UIView()
 	let maskViewCutoutOutline = UIView()
 	
@@ -92,6 +91,9 @@ class ARArtView: UIView {
 	
 	private let detailView = DetailView()
 	
+	private let phantomAnchorNode = SCNNode()
+	private let phantomNode = BillboardNode(directions: [.horizontal, .vertical])
+	
 	var focusPoint: CGPoint {
 		return CGPoint(
 			x: sceneView.bounds.size.width / 2,
@@ -108,6 +110,13 @@ class ARArtView: UIView {
 		
 		let image = UIImage(named: "testStudio.jpg")
 		sceneView.scene.lightingEnvironment.contents = image
+		
+		phantomNode.position.z = -1
+		
+		phantomAnchorNode.addChildNode(phantomNode)
+		
+		phantomAnchorNode.eulerAngles.x = -Float(60).degreesToRadians
+		sceneView.scene.rootNode.addChildNode(phantomAnchorNode)
 		
 		sceneView.mask = UIView()
 		sceneView.mask!.backgroundColor = UIColor(white: 0, alpha: 1)
@@ -231,6 +240,14 @@ class ARArtView: UIView {
 			
 			sceneArtwork.node.runAction(action)
 		}
+		
+		let phantomArtworkPlane = SCNPlane(
+			width: CGFloat(sceneArtwork.artwork.width),
+			height: CGFloat(sceneArtwork.artwork.height))
+		phantomArtworkPlane.firstMaterial?.diffuse.contents = sceneArtwork.artwork.image
+
+		let phantomArtworkNode = SCNNode(geometry: phantomArtworkPlane)
+		phantomNode.billboardContentNode.addChildNode(phantomArtworkNode)
 		
 		if sceneArtwork.node.parent == nil {
 			self.sceneView.scene.rootNode.addChildNode(sceneArtwork.node)
