@@ -41,23 +41,25 @@ class ScalingInterfaceNode: ScaleNode {
 	}
 	
 	func updateView() {
-		let bezierPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius)
-		bezierPath.flatness = 0.001
-		
-		//It's possible to use a view, but that causes lag when it's initially displayed,
-		//so we render it to an image instead.
-		let image = view.image()
-		
-		shape = SCNShape(path: bezierPath, extrusionDepth: 10)
-		shape?.firstMaterial?.diffuse.contents = image
-		shape?.insertMaterial(backSideMaterial, at: 1)
-		shape?.insertMaterial(backSideMaterial, at: 2)
-		
-		backSideMaterial.diffuse.contents = view.backgroundColor
-		
-		interfaceNode.geometry = shape
-		
-		interfaceNode.position.x = Float(-(bezierPath.bounds.size.width * 0.5))
-		interfaceNode.position.y = Float(-(bezierPath.bounds.size.height * 0.5))
+		DispatchQueue.main.async {
+			let bezierPath = UIBezierPath(roundedRect: self.view.bounds, cornerRadius: self.view.layer.cornerRadius)
+			bezierPath.flatness = 0.001
+			
+			//It's possible to use a view, but that causes lag when it's initially displayed,
+			//so we render it to an image instead.
+			let image = self.view.image()
+			
+			self.shape = SCNShape(path: bezierPath, extrusionDepth: 10)
+			self.shape?.firstMaterial?.diffuse.contents = image
+			self.shape?.insertMaterial(self.backSideMaterial, at: 1)
+			self.shape?.insertMaterial(self.backSideMaterial, at: 2)
+			
+			self.backSideMaterial.diffuse.contents = self.view.backgroundColor
+			
+			self.interfaceNode.geometry = self.shape
+			
+			self.interfaceNode.position.x = Float(-(bezierPath.bounds.size.width * 0.5))
+			self.interfaceNode.position.y = Float(-(bezierPath.bounds.size.height * 0.5))
+		}
 	}
 }
