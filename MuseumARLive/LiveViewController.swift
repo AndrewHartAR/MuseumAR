@@ -71,5 +71,9 @@ extension LiveViewController: ARArtViewDelegate {
 		
 		return artwork
 	}
+	
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
 }
 

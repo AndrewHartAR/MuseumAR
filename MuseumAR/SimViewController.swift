@@ -76,4 +76,8 @@ class SimViewController: UIViewController {
 		
 		artView.frame = view.bounds
 	}
+	
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
 }
