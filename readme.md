@@ -2,7 +2,9 @@
 
 # Museum AR
 
-A sample project to accompany my blog post ["How to Build Really Compelling AR Experiences"](https://medium.com/dent-reality/how-to-build-really-compelling-ar-experiences-c7a15529b255).
+Building compelling AR experiences is tricky - it's a new form factor, with no design guidelines. We've written a blog post to share some of what we've learnt over the past two years, creating some of the most compelling and viral demos with AR.
+
+This is a sample project to accompany the blog post ["How to Build Really Compelling AR Experiences"](https://medium.com/dent-reality/how-to-build-really-compelling-ar-experiences-c7a15529b255).
 
 This repo allows you to test out and take inspiration from some of the ideas shared, around scaling content, orienting content appropriately, and re-creating artwork digitally, for a more comfortable AR experience.
 
