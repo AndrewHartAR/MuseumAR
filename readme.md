@@ -2,7 +2,7 @@
 
 # Museum AR
 
-A sample project to accompany my blog post "How to Build Really Compelling AR Experiences".
+A sample project to accompany my blog post ["How to Build Really Compelling AR Experiences"](https://medium.com/dent-reality/how-to-build-really-compelling-ar-experiences-c7a15529b255).
 
 This repo allows you to test out and take inspiration from some of the ideas shared, around scaling content, orienting content appropriately, and re-creating artwork digitally, for a more comfortable AR experience.
 
@@ -14,7 +14,7 @@ This project comes with two modes:
 
 ## Credit
 
-At Dent Reality, we’re building Indoor AR navigation for shopping malls, campuses and other large spaces. You can apply for Early Access on our website.
+At Dent Reality, we’re building Indoor AR navigation for shopping malls, campuses and other large spaces. You can apply for Early Access [on our website](https://DentReality.com).
 
 [Follow me on Twitter](https://twitter.com/AndrewProjDent), where I frequently tweet my thoughts on AR, and share AR demos of our work.
 
